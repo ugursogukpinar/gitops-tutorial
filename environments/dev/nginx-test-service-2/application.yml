@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-test-service-2
+  namespace: gitops-playground
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: gitops-playground
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops-playground
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+  source:
+    repoURL: https://github.com/ugursogukpinar/gitops-tutorial
+    chart: helm-templates
+    targetRevision: main
+
+    helm:
+      values: |
+        image:
+          repository: nginx-test
+          pullPolicy: IfNotPresent
+          # Overrides the image tag whose default is the chart appVersion.
+          tag: "latest"
+
+        nameOverride: "nginx-test-service"
+        fullnameOverride: "nginx-test-service"
+
+        resources:
+          # We usually recommend not to specify default resources and to leave this as a conscious
+          # choice for the user. This also increases chances charts run on environments with little
+          # resources, such as Minikube. If you do want to specify resources, uncomment the following
+          # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+          limits:
+            cpu: 1000m
+            memory: 128Mi
+          requests:
+            cpu: 500m
+            memory: 128Mi
