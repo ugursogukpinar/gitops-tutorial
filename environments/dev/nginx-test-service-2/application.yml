@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-test-service-2
-  namespace: gitops-playground
+  namespace: gitops-tutorial
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: gitops-playground
+  project: gitops-tutorial
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitops-playground
+    namespace: gitops-tutorial
   syncPolicy:
     automated:
       prune: true
