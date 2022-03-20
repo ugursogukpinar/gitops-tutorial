@@ -2,14 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gitops-tutorial
+  namespace: argocd
 spec:
   destination:
-    namespace: argocd
+    namespace: gitops-tutorial
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd
+    path: environments/dev
     repoURL: 'https://github.com/ugursogukpinar/gitops-tutorial'
     targetRevision: HEAD
+    directory:
+      recurse: true
   project: gitops-tutorial
   syncPolicy:
     automated:
