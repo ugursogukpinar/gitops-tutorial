@@ -8,7 +8,7 @@ spec:
     namespace: gitops-tutorial
     server: 'https://kubernetes.default.svc'
   source:
-    path: environments/dev/apps
+    path: environments/dev
     repoURL: 'https://github.com/ugursogukpinar/gitops-tutorial'
     targetRevision: HEAD
     directory:
@@ -18,3 +18,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
