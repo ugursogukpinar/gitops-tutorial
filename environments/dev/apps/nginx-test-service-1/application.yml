@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-test-service-1
-  namespace: gitops-tutorial
+  namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
