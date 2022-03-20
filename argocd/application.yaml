@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops-tutorial
+spec:
+  destination:
+    namespace: gitops-tutorial
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd
+    repoURL: 'https://github.com/ugursogukpinar/gitops-tutorial'
+    targetRevision: HEAD
+  project: gitops-tutorial
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
