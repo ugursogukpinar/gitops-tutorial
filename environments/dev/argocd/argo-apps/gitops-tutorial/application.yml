@@ -4,9 +4,9 @@ metadata:
   name: gitops-tutorial
   namespace: argocd
 spec:
-  project: default
+  project: gitops-tutorial
   destination:
-    namespace: argocd
+    namespace: gitops-tutorial
     server: 'https://kubernetes.default.svc'
   source:
     path: environments/dev/apps/gitops-tutorial
