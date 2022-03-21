@@ -8,12 +8,11 @@ spec:
     namespace: gitops-tutorial
     server: 'https://kubernetes.default.svc'
   source:
-    path: environments/dev
+    path: environments/dev/gitops-tutorial
     repoURL: 'https://github.com/ugursogukpinar/gitops-tutorial'
     targetRevision: HEAD
     directory:
       recurse: true
-  project: gitops-tutorial
   syncPolicy:
     automated:
       prune: true
