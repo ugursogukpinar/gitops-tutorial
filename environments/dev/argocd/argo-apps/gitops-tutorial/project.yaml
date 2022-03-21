@@ -12,5 +12,5 @@ spec:
   - 'https://github.com/ugursogukpinar/gitops-tutorial'
   # Only permit applications to deploy to the gitops-tutorial namespace in the same cluster
   destinations:
-  - namespace: gitops-tutorial
+  - namespace: '*'
     server: https://kubernetes.default.svc
