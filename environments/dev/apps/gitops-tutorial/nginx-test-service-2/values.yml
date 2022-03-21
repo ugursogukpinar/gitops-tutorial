@@ -1,0 +1,15 @@
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+nameOverride: "nginx-test-service-2"
+fullnameOverride: "nginx-test-service-2"
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 128Mi
+  requests:
+    cpu: 500m
+    memory: 128Mi
