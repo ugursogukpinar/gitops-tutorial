@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: nginx-test-service-2
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: gitops-tutorial
   destination:
@@ -17,8 +15,8 @@ spec:
     syncOptions:
       - ApplyOutOfSyncOnly=true
   source:
-    repoURL: https://github.com/ugursogukpinar/gitops-tutorial
-    chart: helm-templates
+    repoURL: https://github.com/ugursogukpinar/gitops-tutorial.git
+    path: helm-templates
     targetRevision: main
 
     helm:
